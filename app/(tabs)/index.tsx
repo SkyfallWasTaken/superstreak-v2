@@ -1,6 +1,6 @@
 import { ExternalLink } from "@tamagui/lucide-icons";
 import { Anchor, Button, H2, Paragraph, Text, XStack, YStack } from "tamagui";
-import { ToastControl } from "app/CurrentToast";
+import { StreakCard } from "app/components/index/StreakCard";
 
 export default function TabOneScreen() {
   return (
@@ -20,12 +20,7 @@ export default function TabOneScreen() {
         </Button>
       </XStack>
 
-      <Paragraph fos="$5">
-        Questions about Tamagui Please excuse the silly question, I'm new to
-        React Native and Tamagui. Tamagui looks cool, but I'm not sure if it's
-        necessary for mobile-only apps. I also don't really see the benefit over
-        StyleSheet.create Thanks!
-      </Paragraph>
+      <StreakCard name="Do the dishes" iconEmoji="🍽️" streak={3} completed={false} />
 
       <XStack
         ai="center"
