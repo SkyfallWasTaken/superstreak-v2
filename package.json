@@ -9,7 +9,9 @@
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "web": "npx expo start --web",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "biome lint --write .",
+    "format": "biome format --write ."
   },
   "jest": {
     "preset": "jest-expo"
@@ -41,6 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.9",
+    "@biomejs/biome": "1.8.3",
     "@expo/metro-config": "~0.18.9",
     "@expo/metro-runtime": "~3.2.1",
     "@tamagui/babel-plugin": "^1.104.2",
@@ -49,5 +52,6 @@
     "@types/react-native": "^0.73.0",
     "typescript": "^5.5.4"
   },
-  "private": true
+  "private": true,
+  "packageManager": "yarn@4.0.2"
 }

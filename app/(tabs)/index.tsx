@@ -1,5 +1,5 @@
 import { ExternalLink } from "@tamagui/lucide-icons";
-import { Anchor, Button, H2, Paragraph, XStack, YStack } from "tamagui";
+import { Anchor, Button, H2, Paragraph, Text, XStack, YStack } from "tamagui";
 import { ToastControl } from "app/CurrentToast";
 
 export default function TabOneScreen() {
@@ -7,9 +7,25 @@ export default function TabOneScreen() {
     <YStack f={1} ai="center" gap="$8" px="$10" pt="$5">
       <H2>Tamagui + Expo</H2>
 
-      <XStack>
-        <Button>Hello there</Button>
+      <XStack gap="$3" jc="center">
+        <Button
+          onPress={() => {
+            alert("Hello!");
+          }}
+        >
+          Hello there
+        </Button>
+        <Button disabled o={0.5}>
+          Hello there
+        </Button>
       </XStack>
+
+      <Paragraph fos="$5">
+        Questions about Tamagui Please excuse the silly question, I'm new to
+        React Native and Tamagui. Tamagui looks cool, but I'm not sure if it's
+        necessary for mobile-only apps. I also don't really see the benefit over
+        StyleSheet.create Thanks!
+      </Paragraph>
 
       <XStack
         ai="center"
