@@ -1,6 +1,6 @@
 import { Link, Tabs } from "expo-router";
 import { Button, useTheme } from "tamagui";
-import { Home, Settings, AudioWaveform } from "@tamagui/lucide-icons";
+import { PieChart, Home, Settings } from "@tamagui/lucide-icons";
 
 export default function TabLayout() {
   const theme = useTheme();
@@ -26,7 +26,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="statistics"
+        options={{
+          title: "Statistics",
+          tabBarIcon: ({ color }) => <PieChart color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => <Settings color={color} />,
