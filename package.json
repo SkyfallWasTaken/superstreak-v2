@@ -17,6 +17,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-navigation/native": "^6.1.18",
     "@tamagui/config": "^1.104.2",
     "@tamagui/lucide-icons": "^1.104.2",

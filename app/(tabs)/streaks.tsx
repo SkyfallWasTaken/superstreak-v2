@@ -1,8 +1,34 @@
 import { ExternalLink } from "@tamagui/lucide-icons";
-import { Anchor, Button, H2, Paragraph, Text, XStack, YStack } from "tamagui";
+import {
+  Anchor,
+  Button,
+  H2,
+  Paragraph,
+  Text,
+  useMedia,
+  XStack,
+  YStack,
+} from "tamagui";
 import { StreakCard } from "app/components/index/StreakCard";
 
 export default function TabOneScreen() {
+  const media = useMedia();
+  const isMobile = media.sm;
+
+  const streaks = [
+    {
+      name: "Do the dishes",
+      iconEmoji: "🍽️",
+      description: "Wash the dishes in the kitchen",
+      streak: 3,
+      completed: false,
+      id: 0,
+    },
+  ];
+  const streakCards = streaks.map((streak) => (
+    <StreakCard {...streak} key={streak.id} />
+  ));
+
   return (
     <YStack f={1} ai="center" gap="$8" px="$10" pt="$5">
       <H2>Tamagui + Expo</H2>
@@ -20,22 +46,17 @@ export default function TabOneScreen() {
         </Button>
       </XStack>
 
-      <YStack width="$full" gap="$4">
-        <StreakCard
-          name="Do the dishes"
-          description="Wash the dishes in the kitchen"
-          iconEmoji="🍽️"
-          streak={3}
-          completed={false}
-        />
-        <StreakCard
-          name="Do the dishes"
-          description="Wash the dishes in the kitchen"
-          iconEmoji="🍽️"
-          streak={3}
-          completed={false}
-        />
-      </YStack>
+      {isMobile ? (
+        <YStack gap="$4" padding="$4">
+          {streakCards}
+        </YStack>
+      ) : (
+        <YStack gap="$4" padding="$4">
+          <XStack gap="$4" flexWrap="wrap" justifyContent="space-between">
+            {streakCards}
+          </XStack>
+        </YStack>
+      )}
 
       <XStack
         ai="center"
