@@ -20,13 +20,15 @@ export default function TabOneScreen() {
         </Button>
       </XStack>
 
-      <StreakCard
-        name="Do the dishes"
-        description="Wash the dishes in the kitchen"
-        iconEmoji="🍽️"
-        streak={3}
-        completed={false}
-      />
+      <YStack width="$full">
+        <StreakCard
+          name="Do the dishes"
+          description="Wash the dishes in the kitchen"
+          iconEmoji="🍽️"
+          streak={3}
+          completed={false}
+        />
+      </YStack>
 
       <XStack
         ai="center"

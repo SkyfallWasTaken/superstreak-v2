@@ -13,7 +13,16 @@ export function StreakCard(props: StreakCardProps) {
   const theme = useTheme();
 
   return (
-    <Card elevate px="$1" py="$1" bordered>
+    <Card
+      elevate
+      px="$1"
+      py="$1"
+      bordered
+      animation="bouncy"
+      hoverStyle={{ scale: 0.985 }}
+      pressStyle={{ scale: 0.955 }}
+      width="$full"
+    >
       <Card.Header>
         <XStack gap="$3">
           <H2 fos="$8">{props.iconEmoji}</H2>
