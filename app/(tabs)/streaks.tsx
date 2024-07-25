@@ -11,7 +11,7 @@ import {
 } from "tamagui";
 import { StreakCard } from "app/components/index/StreakCard";
 
-export default function TabOneScreen() {
+export default function StreaksScreen() {
   const media = useMedia();
   const isMobile = media.sm;
 
