@@ -10,8 +10,9 @@
     "ios": "npx expo start --ios",
     "web": "npx expo start --web",
     "test": "jest --watchAll",
-    "lint": "biome lint --write .",
-    "format": "biome format --write ."
+    "lint": "bun run knip && biome lint --write .",
+    "format": "biome format --write .",
+    "knip": "knip"
   },
   "jest": {
     "preset": "jest-expo"
@@ -51,8 +52,10 @@
     "@expo/metro-runtime": "~3.2.3",
     "@tamagui/babel-plugin": "^1.108.4",
     "@tamagui/metro-plugin": "^1.108.4",
+    "@types/node": "^22.5.0",
     "@types/react": "~18.2.79",
     "@types/react-native": "^0.73.0",
+    "knip": "^5.27.3",
     "typescript": "^5.5.4"
   },
   "private": true,
