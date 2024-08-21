@@ -19,6 +19,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-navigation/native": "^6.1.18",
+    "@shopify/flash-list": "1.6.4",
     "@tamagui/config": "^1.108.4",
     "@tamagui/lucide-icons": "^1.108.4",
     "@tamagui/toast": "^1.108.4",
