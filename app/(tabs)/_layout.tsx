@@ -1,6 +1,6 @@
 import { Link, Tabs } from "expo-router";
-import { useTheme } from "tamagui";
-import { PieChart, Zap, Settings } from "@tamagui/lucide-icons";
+import { Button, useTheme } from "tamagui";
+import { PieChart, Zap, Settings, Plus } from "@tamagui/lucide-icons";
 
 export default function TabLayout() {
   const theme = useTheme();
@@ -16,6 +16,13 @@ export default function TabLayout() {
         options={{
           title: "Streaks",
           tabBarIcon: ({ color }) => <Zap color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Button mr="$3" size={40} circular>
+                <Plus scale="$0.5" />
+              </Button>
+            </Link>
+          ),
         }}
       />
       <Tabs.Screen
