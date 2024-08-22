@@ -60,7 +60,7 @@ function RootLayoutNav() {
           <Stack.Screen
             name="newStreak"
             options={{
-              title: "Tamagui + Expo",
+              title: "New Streak",
               presentation: "modal",
               animation: "slide_from_right",
               gestureEnabled: true,
