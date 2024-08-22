@@ -17,7 +17,7 @@ export default function TabLayout() {
           title: "Streaks",
           tabBarIcon: ({ color }) => <Zap color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/newStreak" asChild>
               <Button mr="$3" size={40} circular>
                 <Plus scale="$0.5" />
               </Button>
