@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button, Input, Label, Text, Stack, View, YStack, Form } from "tamagui";
+import { useRouter } from "expo-router";
 import { useStreaksStore } from "app/streaks";
 import { nanoid } from "nanoid";
 
@@ -16,6 +17,7 @@ export default function ModalScreen() {
     formState: { errors, isValid },
   } = useForm<Inputs>();
   const { addStreak } = useStreaksStore();
+  const router = useRouter();
 
   function onSubmit(data: Inputs) {
     addStreak({
@@ -25,7 +27,7 @@ export default function ModalScreen() {
       streak: 0,
       completed: false,
     });
-    alert("Done!");
+    return router.replace("/(tabs)/streaks");
   }
 
   return (
