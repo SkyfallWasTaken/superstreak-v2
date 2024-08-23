@@ -67,6 +67,7 @@ export default function ModalScreen() {
         bg="$primary"
         hoverStyle={{ bg: "$primaryHover" }}
         disabled={!isValid}
+        disabledStyle={{ bg: "$gray8" }}
       >
         Submit
       </Button>
