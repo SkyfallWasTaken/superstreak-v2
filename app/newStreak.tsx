@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button, Input, Label, Text, Stack, View, YStack, Form } from "tamagui";
+import { useStreaksStore } from "app/streaks";
+import { nanoid } from "nanoid";
 
 type Inputs = {
   name: string;
@@ -12,7 +14,18 @@ export default function ModalScreen() {
     control,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm();
+  } = useForm<Inputs>();
+  const { addStreak } = useStreaksStore();
+
+  function onSubmit(data: Inputs) {
+    addStreak({
+      ...data,
+      iconEmoji: "🐶",
+      streak: 0,
+      completed: false,
+    });
+    alert("Done!");
+  }
 
   return (
     <YStack gap="$4" padding="$4">
@@ -57,7 +70,7 @@ export default function ModalScreen() {
       </Stack>
 
       <Button
-        onPress={handleSubmit((data) => console.log(data))}
+        onPress={handleSubmit(onSubmit)}
         bg="$primary"
         hoverStyle={{ bg: "$primaryHover" }}
         disabled={!isValid}

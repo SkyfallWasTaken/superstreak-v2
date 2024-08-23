@@ -10,6 +10,7 @@ import {
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { Provider } from "./Provider";
+import "react-native-get-random-values";
 
 export {
   // Catch any errors thrown by the Layout component.
