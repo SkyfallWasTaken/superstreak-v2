@@ -1,15 +1,8 @@
 import { Check } from "@tamagui/lucide-icons";
+import type { Streak } from "app/streaks";
 import { Button, Card, H2, Separator, Text, useTheme, XStack } from "tamagui";
 
-export interface StreakCardProps {
-  name: string;
-  iconEmoji: string;
-  description: string | null;
-  streak: number;
-  completed: boolean;
-}
-
-export function StreakCard(props: StreakCardProps) {
+export function StreakCard(props: Streak) {
   const theme = useTheme();
 
   return (
