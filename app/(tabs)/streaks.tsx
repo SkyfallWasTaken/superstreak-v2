@@ -1,8 +1,17 @@
-import { Button, H2, ScrollView, useMedia, XStack, YStack } from "tamagui";
+import {
+  Button,
+  H2,
+  ScrollView,
+  useMedia,
+  XStack,
+  YStack,
+  View,
+  Text,
+} from "tamagui";
 import { StreakCard } from "app/components/index/StreakCard";
 import { FlashList } from "@shopify/flash-list";
-import { View } from "react-native";
 import { useStreaksStore } from "app/streaks";
+import { useRouter } from "expo-router";
 
 const Separator = () => <View style={{ height: 16 }} />; // Adjust height as needed
 
@@ -11,9 +20,7 @@ export default function StreaksScreen() {
   const isMobile = media.sm;
   const streaks = useStreaksStore((state) => state.streaks);
 
-  const streakCards = streaks.map((streak) => (
-    <StreakCard {...streak} key={streak.id} />
-  ));
+  const router = useRouter();
   const flashList = (
     <FlashList
       data={streaks}
@@ -25,14 +32,16 @@ export default function StreaksScreen() {
 
   return (
     <YStack jc="center" gap="$8" py="$5" px="$5">
-      {isMobile ? (
+      {streaks.length !== 0 ? (
         <ScrollView gap="$4">{flashList}</ScrollView>
       ) : (
-        <YStack gap="$4" padding="$4">
-          <XStack gap="$4" flexWrap="wrap" justifyContent="space-between">
-            {streakCards}
-          </XStack>
-        </YStack>
+        <View>
+          <H2>No streaks... yet</H2>
+          <Text>Do something awesome!</Text>
+          <Button mt="$4" onPress={() => router.navigate("/newStreak")}>
+            Add a new streak
+          </Button>
+        </View>
       )}
     </YStack>
   );
