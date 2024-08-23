@@ -14,18 +14,19 @@ export default function StreaksScreen() {
   const streakCards = streaks.map((streak) => (
     <StreakCard {...streak} key={streak.id} />
   ));
+  const flashList = (
+    <FlashList
+      data={streaks}
+      renderItem={({ item }) => <StreakCard {...item} key={item.id} />}
+      estimatedItemSize={174}
+      ItemSeparatorComponent={Separator}
+    />
+  );
 
   return (
     <YStack jc="center" gap="$8" py="$5" px="$5">
       {isMobile ? (
-        <ScrollView gap="$4">
-          <FlashList
-            data={streaks}
-            renderItem={({ item }) => <StreakCard {...item} key={item.id} />}
-            estimatedItemSize={174}
-            ItemSeparatorComponent={Separator}
-          />
-        </ScrollView>
+        <ScrollView gap="$4">{flashList}</ScrollView>
       ) : (
         <YStack gap="$4" padding="$4">
           <XStack gap="$4" flexWrap="wrap" justifyContent="space-between">
