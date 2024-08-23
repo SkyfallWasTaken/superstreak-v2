@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 
 export interface Streak {
   name: string;
+  id: string;
   iconEmoji: string;
   description: string | null;
   streak: number;

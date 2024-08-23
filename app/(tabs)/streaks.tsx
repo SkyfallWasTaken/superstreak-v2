@@ -2,59 +2,19 @@ import { Button, H2, ScrollView, useMedia, XStack, YStack } from "tamagui";
 import { StreakCard } from "app/components/index/StreakCard";
 import { FlashList } from "@shopify/flash-list";
 import { View } from "react-native";
+import { useStreaksStore } from "app/streaks";
 
 const Separator = () => <View style={{ height: 16 }} />; // Adjust height as needed
 
 export default function StreaksScreen() {
   const media = useMedia();
   const isMobile = media.sm;
+  const streaks = useStreaksStore((state) => state.streaks);
 
-  const streaks = [
-    {
-      name: "Do the dishes",
-      iconEmoji: "🍽️",
-      description: "Wash the dishes in the kitchen",
-      streak: 3,
-      completed: false,
-      id: 0,
-    },
-    {
-      name: "Do the dishes",
-      iconEmoji: "🍽️",
-      description: "Wash the dishes in the kitchen",
-      streak: 3,
-      completed: false,
-      id: 1,
-    },
-    {
-      name: "Do the dishes",
-      iconEmoji: "🍽️",
-      description: "Wash the dishes in the kitchen",
-      streak: 3,
-      completed: false,
-      id: 1,
-    },
-    {
-      name: "Do the dishes",
-      iconEmoji: "🍽️",
-      description: "Wash the dishes in the kitchen",
-      streak: 3,
-      completed: false,
-      id: 1,
-    },
-    {
-      name: "Do the dishes",
-      iconEmoji: "🍽️",
-      description: "Wash the dishes in the kitchen",
-      streak: 3,
-      completed: false,
-      id: 1,
-    },
-  ];
   const streakCards = streaks.map((streak) => (
     <StreakCard {...streak} key={streak.id} />
   ));
-  //
+
   return (
     <YStack jc="center" gap="$8" py="$5" px="$5">
       {isMobile ? (
