@@ -14,6 +14,7 @@ export interface Streak {
 interface StreaksState {
   streaks: Streak[];
   addStreak: (streak: Streak) => void;
+  removeStreak: (id: string) => void;
 }
 
 export const useStreaksStore = create<StreaksState>()(
@@ -22,6 +23,8 @@ export const useStreaksStore = create<StreaksState>()(
       streaks: [],
       addStreak: (streak: Streak) =>
         set({ streaks: [...get().streaks, streak] }),
+      removeStreak: (id: string) =>
+        set({ streaks: get().streaks.filter((streak) => streak.id !== id) }),
     }),
     {
       name: "streaks-storage",
