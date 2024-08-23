@@ -20,6 +20,7 @@ export default function ModalScreen() {
   function onSubmit(data: Inputs) {
     addStreak({
       ...data,
+      id: nanoid(),
       iconEmoji: "🐶",
       streak: 0,
       completed: false,
