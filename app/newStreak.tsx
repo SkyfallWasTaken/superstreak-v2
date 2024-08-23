@@ -42,9 +42,6 @@ export default function ModalScreen() {
         <Controller
           control={control}
           name="description"
-          rules={{
-            required: "Description is required",
-          }}
           render={({ field: { value, onChange, onBlur } }) => (
             <YStack>
               <Label>Description</Label>
@@ -54,9 +51,6 @@ export default function ModalScreen() {
                 onChangeText={onChange}
                 onBlur={onBlur}
               />
-              {errors.description && (
-                <Label color="$red10">{errors.description.message}</Label>
-              )}
             </YStack>
           )}
         />
