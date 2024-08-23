@@ -1,73 +1,72 @@
 import { useState } from "react";
-import {
-  Anchor,
-  Button,
-  Input,
-  Label,
-  Paragraph,
-  Stack,
-  View,
-  XStack,
-  YStack,
-} from "tamagui";
+import { Controller, useForm } from "react-hook-form";
+import { Button, Input, Label, Text, Stack, View, YStack, Form } from "tamagui";
+
+type Inputs = {
+  name: string;
+  description: string;
+};
 
 export default function ModalScreen() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (name: string, value: string) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = () => {
-    // Handle form submission
-    console.log("Form data:", formData);
-  };
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm();
 
   return (
     <YStack gap="$4" padding="$4">
       <Stack gap="$3">
-        <Label htmlFor="name">Name</Label>
-        <Input
-          id="name"
-          placeholder="Enter your name"
-          value={formData.name}
-          onChangeText={(text) => handleChange("name", text)}
+        <Controller
+          control={control}
+          name="name"
+          rules={{
+            required: "Name is required",
+          }}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <YStack>
+              <Label>Name</Label>
+              <Input
+                placeholder="Walk Max"
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+              />
+              {errors.name && (
+                <Label color="$red10">{errors.name.message}</Label>
+              )}
+            </YStack>
+          )}
         />
-      </Stack>
 
-      <Stack gap="$3">
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          placeholder="Enter your email"
-          value={formData.email}
-          onChangeText={(text) => handleChange("email", text)}
-          keyboardType="email-address"
-        />
-      </Stack>
-
-      <Stack gap="$3">
-        <Label htmlFor="password">Password</Label>
-        <Input
-          id="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChangeText={(text) => handleChange("password", text)}
-          secureTextEntry
+        <Controller
+          control={control}
+          name="description"
+          rules={{
+            required: "Description is required",
+          }}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <YStack>
+              <Label>Description</Label>
+              <Input
+                placeholder="Walk Max around the park"
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+              />
+              {errors.description && (
+                <Label color="$red10">{errors.description.message}</Label>
+              )}
+            </YStack>
+          )}
         />
       </Stack>
 
       <Button
-        onPress={handleSubmit}
+        onPress={handleSubmit((data) => console.log(data))}
         bg="$primary"
         hoverStyle={{ bg: "$primaryHover" }}
+        disabled={!isValid}
       >
         Submit
       </Button>
