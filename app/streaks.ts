@@ -14,6 +14,7 @@ export interface Streak {
 interface StreaksState {
   streaks: Streak[];
   addStreak: (streak: Streak) => void;
+  updateStreak: (id: string, newStreak: Partial<Streak>) => void;
   removeStreak: (id: string) => void;
 }
 
@@ -23,6 +24,12 @@ export const useStreaksStore = create<StreaksState>()(
       streaks: [],
       addStreak: (streak: Streak) =>
         set({ streaks: [...get().streaks, streak] }),
+      updateStreak: (id: string, newStreak: Partial<Streak>) =>
+        set({
+          streaks: get().streaks.map((streak) =>
+            streak.id === id ? { ...streak, ...newStreak } : streak
+          ),
+        }),
       removeStreak: (id: string) =>
         set({ streaks: get().streaks.filter((streak) => streak.id !== id) }),
     }),
