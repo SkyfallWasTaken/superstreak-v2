@@ -26,6 +26,7 @@ export default function ModalScreen() {
       iconEmoji: "🐶",
       streak: 0,
       completed: false,
+      dates: [],
     });
     return router.replace("/(tabs)/streaks");
   }

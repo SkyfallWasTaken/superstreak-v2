@@ -2,7 +2,6 @@ import { Check, Trash2 } from "@tamagui/lucide-icons";
 import { useStreaksStore, type Streak } from "app/streaks";
 import { Button, Card, H2, Separator, Text, useTheme, XStack } from "tamagui";
 import DeleteConfirmSheet from "./DeleteConfirmSheet";
-import { Explosion } from "../Confetti";
 import { useState } from "react";
 
 export function StreakCard(props: Streak) {
@@ -52,7 +51,15 @@ export function StreakCard(props: Streak) {
               bg={theme.green11}
               icon={<Check size="$2" />}
               onPress={() =>
-                store.updateStreak(props.id, { streak: props.streak + 1 })
+                store.updateStreak(props.id, {
+                  streak: props.streak + 1,
+                  dates: [
+                    ...store.streaks.filter(
+                      (streak) => streak.id === props.id
+                    )[0].dates,
+                    new Date().toISOString(),
+                  ],
+                })
               }
             />
           </XStack>

@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { format, subMonths, isAfter } from "date-fns";
 
 export interface Streak {
   name: string;
@@ -9,6 +10,7 @@ export interface Streak {
   description: string | null;
   streak: number;
   completed: boolean;
+  dates: string[];
 }
 
 interface StreaksState {

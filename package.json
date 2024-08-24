@@ -26,6 +26,7 @@
     "@tamagui/toast": "^1.109.1",
     "babel-preset-expo": "^11.0.14",
     "burnt": "^0.12.2",
+    "date-fns": "^3.6.0",
     "expo": "~51.0.31",
     "expo-dev-client": "^4.0.25",
     "expo-font": "~12.0.9",
