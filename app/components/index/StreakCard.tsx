@@ -2,6 +2,7 @@ import { Check, Trash2 } from "@tamagui/lucide-icons";
 import { useStreaksStore, type Streak } from "app/streaks";
 import { Button, Card, H2, Separator, Text, useTheme, XStack } from "tamagui";
 import DeleteConfirmSheet from "./DeleteConfirmSheet";
+import { Explosion } from "../Confetti";
 import { useState } from "react";
 
 export function StreakCard(props: Streak) {

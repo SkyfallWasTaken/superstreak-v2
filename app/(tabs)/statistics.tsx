@@ -1,11 +1,71 @@
-import { Text, View } from "tamagui";
+import {
+  Text,
+  View,
+  Card,
+  Paragraph,
+  H2,
+  XStack,
+  Button,
+  Image,
+  H3,
+  useTheme,
+} from "tamagui";
+import { ContributionGraph } from "react-native-chart-kit";
 
 export default function StatisticsScreen() {
+  const commitsData = [
+    { date: "2017-01-02", count: 1 },
+    { date: "2017-01-03", count: 2 },
+    { date: "2017-01-04", count: 3 },
+    { date: "2017-01-05", count: 4 },
+    { date: "2017-01-06", count: 5 },
+    { date: "2017-01-30", count: 2 },
+    { date: "2017-01-31", count: 3 },
+    { date: "2017-03-01", count: 2 },
+    { date: "2017-04-02", count: 4 },
+    { date: "2017-03-05", count: 2 },
+    { date: "2017-02-30", count: 30 },
+  ];
+  const chartConfig = {
+    backgroundGradientFrom: "transparent",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "transparent",
+    backgroundGradientToOpacity: 0,
+
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    barPercentage: 0.5,
+  };
+
+  const date = new Date();
+  const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
   return (
-    <View flex={1} alignItems="center" justifyContent="center">
-      <Text fontSize={20} color="$blue10">
-        Tab Two
-      </Text>
+    <View flex={1} gap="$5" py="$5" px="$5" ai="center">
+      <Card elevate bordered width="100%">
+        <Card.Header padded>
+          <H2>Total streak</H2>
+          <Paragraph theme="alt2" size="$6">
+            4 days - Keep it up!
+          </Paragraph>
+        </Card.Header>
+      </Card>
+      <Card elevate bordered width="100%">
+        <Card.Header padded>
+          <View style={{ width: "100%", alignItems: "center" }}>
+            <ContributionGraph
+              values={commitsData}
+              endDate={endDate}
+              numDays={105}
+              height={220}
+              width={375}
+              chartConfig={chartConfig}
+              tooltipDataAttrs={(value: any) => ({
+                "data-tip": `${value.date}: ${value.count} contributions`,
+              })}
+            />
+          </View>
+        </Card.Header>
+      </Card>
     </View>
   );
 }
