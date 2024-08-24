@@ -10,6 +10,8 @@ export interface Streak {
   description: string | null;
   streak: number;
   completed: boolean;
+
+  /** MM-DD-YYYY */
   dates: string[];
 }
 

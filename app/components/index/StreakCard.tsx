@@ -2,12 +2,18 @@ import { Check, Trash2 } from "@tamagui/lucide-icons";
 import { useStreaksStore, type Streak } from "app/streaks";
 import { Button, Card, H2, Separator, Text, useTheme, XStack } from "tamagui";
 import DeleteConfirmSheet from "./DeleteConfirmSheet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { formatDateToMMDDYYYY } from "app/util";
 
 export function StreakCard(props: Streak) {
   const theme = useTheme();
   const store = useStreaksStore();
   const [openDeleteSheet, setOpenDeleteSheet] = useState(false);
+
+  const dates = useStreaksStore(
+    (state) => state.streaks.find((s) => s.id === props.id)?.dates || []
+  );
+  console.log(dates);
 
   return (
     <>
@@ -49,16 +55,15 @@ export function StreakCard(props: Streak) {
             <Button
               circular
               bg={theme.green11}
+              disabled={
+                dates[dates.length - 1] === formatDateToMMDDYYYY(new Date())
+              }
+              disabledStyle={{ bg: theme.gray3 }}
               icon={<Check size="$2" />}
               onPress={() =>
                 store.updateStreak(props.id, {
                   streak: props.streak + 1,
-                  dates: [
-                    ...store.streaks.filter(
-                      (streak) => streak.id === props.id
-                    )[0].dates,
-                    new Date().toISOString(),
-                  ],
+                  dates: [...dates, formatDateToMMDDYYYY(new Date())],
                 })
               }
             />
