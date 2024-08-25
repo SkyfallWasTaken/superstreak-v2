@@ -30,7 +30,22 @@ jobs:
       - name: Run lint
         run: bun lint
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Build Android
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: eas build --platform android --non-interactive --profile preview
+        run: eas build --local --platform android --non-interactive --profile preview
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: contrail-nightly.apk
+          path: dist/android/*.apk
