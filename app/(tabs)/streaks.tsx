@@ -1,13 +1,4 @@
-import {
-  Button,
-  H2,
-  ScrollView,
-  useMedia,
-  XStack,
-  YStack,
-  View,
-  Text,
-} from "tamagui";
+import { Button, H2, ScrollView, YStack, View, Text } from "tamagui";
 import { StreakCard } from "app/components/index/StreakCard";
 import { FlashList } from "@shopify/flash-list";
 import { useStreaksStore } from "app/streaks";
@@ -16,8 +7,8 @@ import { useRouter } from "expo-router";
 const Separator = () => <View style={{ height: 16 }} />; // Adjust height as needed
 
 export default function StreaksScreen() {
-  const media = useMedia();
-  const isMobile = media.sm;
+  // const media = useMedia();
+  // const isMobile = media.sm;
   const streaks = useStreaksStore((state) => state.streaks);
 
   const router = useRouter();

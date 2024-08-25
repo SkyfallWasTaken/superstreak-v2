@@ -1,4 +1,3 @@
-import { ChevronDown } from "@tamagui/lucide-icons";
 import { Sheet, type SheetProps } from "tamagui";
 import { useStreaksStore } from "app/streaks";
 import { Button, H2, Text, Paragraph, YStack } from "tamagui";

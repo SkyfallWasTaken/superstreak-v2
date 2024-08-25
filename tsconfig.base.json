@@ -26,7 +26,7 @@
     "types": ["node"],
     "lib": ["dom", "esnext"]
   },
-  "exclude": ["_"],
+  "exclude": ["_", "node_modules", "build", "dist", "ios", "android", "web"],
   "typeAcquisition": {
     "enable": true
   }

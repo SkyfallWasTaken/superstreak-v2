@@ -1,21 +1,5 @@
-import {
-  Text,
-  View,
-  Card,
-  Paragraph,
-  H2,
-  XStack,
-  Button,
-  Image,
-  H3,
-  useTheme,
-} from "tamagui";
+import { View, Card, Paragraph, H2 } from "tamagui";
 import { ContributionGraph } from "react-native-chart-kit";
-
-interface ContributionChartValue {
-  date: string;
-  count: number;
-}
 
 export default function StatisticsScreen() {
   const commitsData = [
@@ -43,7 +27,7 @@ export default function StatisticsScreen() {
 
   const date = new Date();
   const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  const handleToolTip: any = {}; // Hack to keep TS happy. See https://github.com/indiespirit/react-native-chart-kit/issues/468
+  const handleToolTip = {}; // Hack to keep TS happy. See https://github.com/indiespirit/react-native-chart-kit/issues/468
 
   return (
     <View flex={1} gap="$5" py="$5" px="$5" ai="center">

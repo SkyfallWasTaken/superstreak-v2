@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Button, Input, Label, Text, Stack, View, YStack, Form } from "tamagui";
+import { Button, Input, Label, Stack, YStack } from "tamagui";
 import { useRouter } from "expo-router";
 import { useStreaksStore } from "app/streaks";
 import { nanoid } from "nanoid";

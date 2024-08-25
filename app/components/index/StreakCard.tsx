@@ -2,7 +2,7 @@ import { Check, Trash2 } from "@tamagui/lucide-icons";
 import { useStreaksStore, type Streak } from "app/streaks";
 import { Button, Card, H2, Separator, Text, useTheme, XStack } from "tamagui";
 import DeleteConfirmSheet from "./DeleteConfirmSheet";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { formatDateToMMDDYYYY } from "app/util";
 
 export function StreakCard(props: Streak) {
@@ -13,7 +13,6 @@ export function StreakCard(props: Streak) {
   const dates = useStreaksStore(
     (state) => state.streaks.find((s) => s.id === props.id)?.dates || []
   );
-  console.log(dates);
 
   return (
     <>

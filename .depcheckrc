@@ -1,0 +1,9 @@
+ignores:
+  [
+    "burnt",
+    "expo-dev-client",
+    "react-dom",
+    "react-native-web",
+    "expo-system-ui",
+    "app",
+  ]
