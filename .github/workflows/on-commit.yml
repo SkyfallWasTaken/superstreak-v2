@@ -42,10 +42,10 @@ jobs:
       - name: Build Android
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: eas build --local --platform android --non-interactive --profile preview
+        run: eas build --local --platform android --non-interactive --profile preview -output ${{ github.workspace }}/app-release.apk
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: contrail-nightly.apk
-          path: dist/android/*.apk
+          name: app-release
+          path: ${{ github.workspace }}/app-release.apk
