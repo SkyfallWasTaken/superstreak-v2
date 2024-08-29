@@ -18,7 +18,7 @@ $ bun start
 ```
 And to compile, run
 ```console
-bunx eas build
+$ bunx eas build
 ```
 ---
 
