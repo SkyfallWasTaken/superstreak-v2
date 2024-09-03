@@ -24,5 +24,8 @@
   },
   "submit": {
     "production": {}
+  },
+  "ios": {
+    "bundleIdentifier": "dev.skyfall.contrail"
   }
 }
