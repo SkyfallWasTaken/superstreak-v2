@@ -1,4 +1,4 @@
-name: Bun and Android Build
+name: Bun and iOS Build
 
 on:
   push:
