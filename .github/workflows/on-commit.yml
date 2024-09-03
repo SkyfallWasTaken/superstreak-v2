@@ -8,10 +8,15 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: 🏗 Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "15.2"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -44,8 +49,25 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas build --local --platform android --non-interactive --profile preview --output ${{ github.workspace }}/app-release.apk
 
+      - name: Build iOS
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas build --local --platform ios --non-interactive --profile preview --output ${{ github.workspace }}/app-release.ipa
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
+          name: app-release-android
           path: ${{ github.workspace }}/app-release.apk
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-ios
+          path: ${{ github.workspace }}/app-release.ipa
+
+      - name: Install ios-uploader
+        run: bun install -g ios-uploader
+
+      - name: Upload ipa to TestFlight
+        run: ios-uploader upload -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_PASSWORD }} -f ${{ github.workspace }}/app-release.ipa
